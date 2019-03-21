@@ -28,7 +28,7 @@ class PayOrderRequest extends FormRequest
     {
         return [
             'order_no' => 'required|numeric|digits:10|exists:order,order_no,user_id,'. \Auth::id() .',status,!'.Order::STATUS_CANCELED.
-            '|exists:order,order_no,status,!'.Order::STATUS_PAID,
+            '|exists:order,order_no,status,!'.Order::STATUS_PAID.'|exists:order,order_no,status,!'.Order::STATUS_FAILED,
         ];
     }
 
